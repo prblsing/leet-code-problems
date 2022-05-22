@@ -40,8 +40,9 @@ class MyLinkedList:
 
     def __init__(self):
         self.__my_lnkd_list = []
-        self.__head = None
-        self.__tail = None
+#         self.__head = None 
+# NOT NEEDED
+#         self.__tail = None
 
     def my_list(self):
         return self.__my_lnkd_list
