@@ -33,6 +33,26 @@
 # At most 104 calls will be made to add, remove, and contains.
 
 
+# class MyHashSet:
+
+#     def __init__(self):
+#         self.my_hash_set = []
+        
+
+#     def add(self, key: int) -> None:
+#         if key not in self.my_hash_set:
+#             self.my_hash_set.append(key)
+
+#     def remove(self, key: int) -> None:
+#         if key in self.my_hash_set:
+#             self.my_hash_set.remove(key)
+
+#     def contains(self, key: int) -> bool:
+#         if key in self.my_hash_set:
+#             return True
+#         else:
+#             return False
+        
 class MyHashSet:
 
     def __init__(self):
@@ -40,11 +60,11 @@ class MyHashSet:
         
 
     def add(self, key: int) -> None:
-        if key not in self.my_hash_set:
+        if not self.contains(key):
             self.my_hash_set.append(key)
 
     def remove(self, key: int) -> None:
-        if key in self.my_hash_set:
+        if self.contains(key):
             self.my_hash_set.remove(key)
 
     def contains(self, key: int) -> bool:
@@ -52,8 +72,6 @@ class MyHashSet:
             return True
         else:
             return False
-        
-
 
 # Your MyHashSet object will be instantiated and called as such:
 # obj = MyHashSet()
