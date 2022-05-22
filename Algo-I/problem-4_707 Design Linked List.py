@@ -47,10 +47,13 @@ class MyLinkedList:
         return self.__my_lnkd_list
     
     def get(self, index: int) -> int:
-        return self.__my_lnkd_list[index]
+        if index < len(self.__my_lnkd_list):
+            return self.__my_lnkd_list[index]
+        else:
+            return -1
 
     def addAtHead(self, val: int) -> None:
-        self.addAtIndex(0,val)
+        self.__my_lnkd_list.insert(0,val)
         
 
     def addAtTail(self, val: int) -> None:
@@ -58,8 +61,15 @@ class MyLinkedList:
         
 
     def addAtIndex(self, index: int, val: int) -> None:
-        self.__my_lnkd_list.insert(index,val)
+        if index <= len(self.__my_lnkd_list):
+            self.__my_lnkd_list.insert(index,val)
         
 
     def deleteAtIndex(self, index: int) -> None:
-        del self.__my_lnkd_list[index]
+        if index < len(self.__my_lnkd_list):
+            del self.__my_lnkd_list[index]
+        
+# Success
+# Details 
+# Runtime: 146 ms, faster than 90.15% of Python3 online submissions for Design Linked List.
+# Memory Usage: 14.7 MB, less than 84.28% of Python3 online submissions for Design Linked List.
