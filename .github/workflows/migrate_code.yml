@@ -12,17 +12,23 @@ jobs:
     steps:
     - name: Checkout repo
       uses: actions/checkout@v2
-      with:
-        path: leet-code-problems
+
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
     - name: Install dependencies
       run: pip install PyGithub GitPython
+#     - name: Migrate code component
+#       working-directory: leet-code-problems
+#       env:
+#         GITHUB_TOKEN: ${{ secrets.PAT }}
+#       run: python migrate_code.py "${{ github.event.issue.body }}"
+
+# ...
     - name: Migrate code component
-      working-directory: leet-code-problems
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-      run: python migrate_code.py "${{ github.event.issue.body }}"
+      run: python ${{ github.workspace }}/migrate_code.py "${{ github.event.issue.body }}"
+
 
