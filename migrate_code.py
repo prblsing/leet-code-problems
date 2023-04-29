@@ -10,9 +10,16 @@ def parse_issue_body(issue_body):
     repo_regex = r'Target Repository: (.+)\n'
     branch_regex = r'Branch Name: (.+)\n'
 
-    code_path = re.search(path_regex, issue_body).group(1)
-    target_repo = re.search(repo_regex, issue_body).group(1)
-    branch_name = re.search(branch_regex, issue_body).group(1)
+    code_path_match = re.search(path_regex, issue_body)
+    target_repo_match = re.search(repo_regex, issue_body)
+    branch_name_match = re.search(branch_regex, issue_body)
+
+    if not code_path_match or not target_repo_match or not branch_name_match:
+        raise ValueError("Invalid issue body format. Please provide the code component path, target repository, and branch name.")
+
+    code_path = code_path_match.group(1)
+    target_repo = target_repo_match.group(1)
+    branch_name = branch_name_match.group(1)
 
     return code_path, target_repo, branch_name
 
