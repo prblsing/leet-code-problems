@@ -29,9 +29,10 @@ jobs:
       run: ls -la
 
 # ...
+    # ...
     - name: Migrate code component
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-      run: python ./migrate_code.py "${{ github.event.issue.body }}"
-
-
+      run: |
+        echo "Issue Body: ${{ github.event.issue.body }}"
+        python migrate_code.py "${{ github.event.issue.body }}"
