@@ -1,0 +1,25 @@
+name: Migrate Code
+
+on:
+  issues:
+    types: [opened, labeled]
+
+jobs:
+  migrate_code:
+    runs-on: ubuntu-latest
+    if: ${{ github.event.label.name == 'migration' || contains(github.event.issue.labels.*.name, 'migration') }}
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: pip install PyGithub GitPython
+    - name: Migrate code component
+      env:
+        GITHUB_TOKEN: ${{ secrets.PAT }}
+      run: python migrate_code.py "${{ github.event.issue.body }}"
+
