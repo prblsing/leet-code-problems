@@ -25,6 +25,9 @@ jobs:
 #         GITHUB_TOKEN: ${{ secrets.PAT }}
 #       run: python migrate_code.py "${{ github.event.issue.body }}"
 
+    - name: List directory contents
+      run: ls -la
+
 # ...
     - name: Migrate code component
       env:
