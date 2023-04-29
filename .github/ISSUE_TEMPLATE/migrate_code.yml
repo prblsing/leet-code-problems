@@ -1,0 +1,32 @@
+name: Migrate Code
+description: Migrate a code component to an application-specific repo
+labels: [migration]
+body:
+  - type: input
+    id: code-path
+    attributes:
+      label: Code Component Path
+      description: Enter the path to the code component you want to migrate (e.g., /main-folder/db01/ssis/sql32/code-component.dtsx)
+      placeholder: /main-folder/db01/ssis/sql32/code-component.dtsx
+    validations:
+      required: true
+  - type: dropdown
+    id: target-repo
+    attributes:
+      label: Target Repository
+      description: Select the target repository for the migration
+      options:
+        - code-review
+        - gpt-custom-model
+        - data-engg-CT
+        - active-dev
+    validations:
+      required: true
+  - type: input
+    id: branch-name
+    attributes:
+      label: Branch Name
+      description: Enter the branch name that will be created in the target repository
+      placeholder: my-feature-branch
+    validations:
+      required: true
