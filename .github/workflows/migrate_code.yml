@@ -32,6 +32,6 @@ jobs:
     - name: Migrate code component
       env:
         GITHUB_TOKEN: ${{ secrets.PAT }}
-      run: python ${{ github.workspace }}/migrate_code.py "${{ github.event.issue.body }}"
+      run: python ./migrate_code.py "${{ github.event.issue.body }}"
 
 
